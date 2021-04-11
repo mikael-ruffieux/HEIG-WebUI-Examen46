@@ -23,9 +23,20 @@
 }
 
 ui-button:before {
-    content: "Menu";
+    content: "\e9bd";
+    font-family: 'icomoon';
   }
 
 .hidden {
-    display: none!important;
+    /* display: none!important;*/
+}
+
+.conn-status:before {
+    content: "\e91b";
+    font-family: 'icomoon';
+    color: limegreen;
+}
+
+.conn-status.disconnected:before {
+    color: red!important;
 }

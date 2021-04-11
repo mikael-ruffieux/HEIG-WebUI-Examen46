@@ -1,6 +1,8 @@
 import 'css/style.css';
 
 import JsonStorage from "lib/JsonStorage";
+import "loadServiceWorker.js";
+
 
 import tmplPerson from "templates/person.hbs";
 import tmplLoan from "templates/loan.hbs";
@@ -136,7 +138,19 @@ document.querySelector('form#loan-form-add').addEventListener("submit", evt => {
 });
 
 
+/* ##### Gestion online/offline ##### */
 
+let connIcon = document.querySelector("span.conn-status");
+
+window.addEventListener("online", (event) => {
+    connIcon.classList.remove("disconnected");
+});
+window.addEventListener("offline", (event) => {
+    connIcon.classList.add("disconnected");
+});
+
+
+/* ##### Event managers ##### */
 
 // Si une personne est ajoutée ou supprimée du localStorage (événement = persons-changed), on met à jour le DOM
 window.addEventListener("persons-changed", updatePersonList);
@@ -145,3 +159,4 @@ updatePersonList(); // on met à jour le DOM une première fois
 window.addEventListener("persons-changed", updateLoansList);
 window.addEventListener("loans-changed",updateLoansList);
 updateLoansList();
+
