@@ -34,7 +34,7 @@ const changePage = (event) => {
     // remove "active" feddback on menu links
     let links = document.querySelectorAll("#wrapper > nav a");
     for (let link of links) link.classList.remove('active');
-    // and add it to the current active one
+    // and add it to the current gactive one
     let currentLink = document.querySelector(`[href="${h}"]`);
     currentLink.classList.add('active');
   
