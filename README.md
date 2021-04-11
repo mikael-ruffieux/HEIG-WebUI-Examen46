@@ -5,12 +5,13 @@
 import 'css/style.css';
 
 import JsonStorage from "lib/JsonStorage";
+import "loadServiceWorker.js";
 
 import tmplPerson from "templates/person.hbs";
 import tmplLoan from "templates/loan.hbs";
 
 
-/* Navigation */
+/* ##### Navigation ##### */
 
 document.querySelector("ui-button").addEventListener("click", evt => {
     let navbar = document.querySelector("#wrapper > nav");
@@ -60,6 +61,7 @@ let comparePersons = (p1, p2) => p1.person.localeCompare(p2.person);
 // Fonction servant à comparer 2 prêts
 let compareLoans = (l1, l2) => l1.loan.localeCompare(l2.loan);
 
+
 /* ##### DOM Update ##### */
 
 const updatePersonList = () => {
@@ -96,6 +98,7 @@ const updateLoansList = () => {
     }
 }
 
+
 /* ##### Gestion des personnes ##### */
 
 // Ajout d'une nouvelle personne
@@ -123,6 +126,7 @@ document.querySelector('#persons-list').addEventListener("click", evt => {
     }
 });
 
+
 /* ##### Gestion des prêts ##### */
 
 // Ajout d'un nouveau prêt
@@ -140,7 +144,19 @@ document.querySelector('form#loan-form-add').addEventListener("submit", evt => {
 });
 
 
+/* ##### Gestion online/offline ##### */
 
+let connIcon = document.querySelector("span.conn-status");
+
+window.addEventListener("online", (event) => {
+    connIcon.classList.remove("disconnected");
+});
+window.addEventListener("offline", (event) => {
+    connIcon.classList.add("disconnected");
+});
+
+
+/* ##### Event managers ##### */
 
 // Si une personne est ajoutée ou supprimée du localStorage (événement = persons-changed), on met à jour le DOM
 window.addEventListener("persons-changed", updatePersonList);

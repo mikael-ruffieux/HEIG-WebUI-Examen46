@@ -3,12 +3,11 @@ import 'css/style.css';
 import JsonStorage from "lib/JsonStorage";
 import "loadServiceWorker.js";
 
-
 import tmplPerson from "templates/person.hbs";
 import tmplLoan from "templates/loan.hbs";
 
 
-/* Navigation */
+/* ##### Navigation ##### */
 
 document.querySelector("ui-button").addEventListener("click", evt => {
     let navbar = document.querySelector("#wrapper > nav");
@@ -58,6 +57,7 @@ let comparePersons = (p1, p2) => p1.person.localeCompare(p2.person);
 // Fonction servant à comparer 2 prêts
 let compareLoans = (l1, l2) => l1.loan.localeCompare(l2.loan);
 
+
 /* ##### DOM Update ##### */
 
 const updatePersonList = () => {
@@ -94,6 +94,7 @@ const updateLoansList = () => {
     }
 }
 
+
 /* ##### Gestion des personnes ##### */
 
 // Ajout d'une nouvelle personne
@@ -120,6 +121,7 @@ document.querySelector('#persons-list').addEventListener("click", evt => {
         console.log("Supprimer", btn.dataset.key);
     }
 });
+
 
 /* ##### Gestion des prêts ##### */
 
@@ -159,4 +161,3 @@ updatePersonList(); // on met à jour le DOM une première fois
 window.addEventListener("persons-changed", updateLoansList);
 window.addEventListener("loans-changed",updateLoansList);
 updateLoansList();
-
