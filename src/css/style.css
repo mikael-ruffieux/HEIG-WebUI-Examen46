@@ -1,0 +1,31 @@
+@media screen and (min-width: 30rem) {
+    nav {
+        display: none;
+    }
+    button.loan-btn-add-person {
+        display: none;
+    }
+
+    #persons {grid-area: persons}
+    #loans {grid-area: loans}
+
+    #wrapper > main {
+        display: grid;
+        min-height: 100%;
+    }
+
+    #wrapper > main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+        "persons loans"
+    }
+}
+
+ui-button:before {
+    content: "Menu";
+  }
+
+.hidden {
+    display: none!important;
+}
